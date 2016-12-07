@@ -4,8 +4,12 @@ import numpy as np
 import os
 import matplotlib.pyplot as plt
 
+# data's default name
 dataname = 'data.txt'
+# by default parameters are loaded from same 
+# filename as data, but with .fit 
 paraname = "".join(dataname.split('.')[:-1])+'.fit'
+# logs are written analogous --  .log file
 logname = "".join(dataname.split('.')[:-1])+'.log'
 
 ####################################################
@@ -15,6 +19,8 @@ if len(os.sys.argv)>1:
     dataname = os.sys.argv[1]
 if len(os.sys.argv)>2:
     paraname = os.sys.argv[2]
+if len(os.sys.argv)>3:
+    logname = os.sys.argv[3]
 data = np.genfromtxt(dataname)
 para = np.genfromtxt(paraname,comments='#')
 ####################################################
