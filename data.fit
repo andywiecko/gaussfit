@@ -1,0 +1,19 @@
+# First gauss
+25 4 5
+20 0 0
+28 8 10
+# Second gauss
+
+1 4 1
+0 0 0
+5 10 5
+# Third gauss
+
+8 4 1
+7 0 0
+9 10 5
+
+# Fourth gauss
+5 4 1
+4.5 0 1
+5.5 15 15
