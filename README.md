@@ -19,7 +19,7 @@ where `x0` is expectation value, `A` is amplitude, `s` is gauss width.
 Program by default is doing fitting from file 'data.txt' and taking parameters from 'data.fit', to do fitting from any data `datafile` and parameters `parafile`:
 
 ~~~
-python fitgauss.py file parafile 
+python fitgauss.py datafile parafile 
 ~~~
 
 By third argument user can specify `log` file:
@@ -28,7 +28,7 @@ By third argument user can specify `log` file:
 python fitgauss.py file parafile log
 ~~~
 
-
+![GitHub Logo](example.png)
 
 Requirements:
 * `Python 2.7`
