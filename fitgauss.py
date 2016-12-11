@@ -86,6 +86,18 @@ def calcpoint(x):
         X.append(XL+i*DX)
     return X
 ####################################################
+# Plot grid, set xy ranges ...                     #
+####################################################
+def plot_default(x,y):
+    plt.grid()
+    XMIN = x.min()
+    XMAX = x.max()
+    YMIN = y.min()
+    YMAX = y.max()
+    XS = abs(XMAX-XMIN)*0.05
+    YS = abs(YMAX-YMIN)*0.05
+    plt.axis([XMIN-XS,XMAX+XS,YMIN-YS,YMAX+YS])
+####################################################
 
 ####################################################
 # fitting data
@@ -108,6 +120,9 @@ fit = func(X, *popt)
 
 # plot data
 plt.plot(x, y)
+
+# plot misc
+plot_default(x,y)
 
 # plot gausses sum
 plt.plot(X, fit , 'r-',lw=2)
