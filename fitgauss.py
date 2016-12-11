@@ -73,7 +73,7 @@ def subplot(x,popt):
         amp = popt[i+1]
         wid = popt[i+2]
         fit_X = func_plt(x, ctr,amp,wid)
-        plt.plot(X, fit_X,'--')
+        plt.plot(X, fit_X,'--',lw=2)
 ####################################################
 # Generate X in density DX                         #
 ####################################################
@@ -98,18 +98,24 @@ def plot_default(x,y):
     YS = abs(YMAX-YMIN)*0.05
     plt.axis([XMIN-XS,XMAX+XS,YMIN-YS,YMAX+YS])
 ####################################################
+# Plot grid, set xy ranges ...                     #
+####################################################
+def save_param(logname):
+    f = open(logname, 'w')
+    f.write('#ctr amp wid\n')
+    for i in range(len(popt)):
+        f.write(str(popt[i])+'\t')
+        if (i+1) % 3 == 0:
+            f.write('\n')
+    f.close()
+####################################################
 
 ####################################################
 # fitting data
 popt, pcov = curve_fit(func, x, y, p0=guess,bounds=(low,high))
 
-f = open(logname, 'w')
-f.write('#ctr amp wid\n')
-for i in range(len(popt)):
-    f.write(str(popt[i])+'\t')
-    if (i+1) % 3 == 0:
-        f.write('\n')
-f.close()
+# save fitted parameters
+save_param(logname)
 
 # printing parameters
 print_popt(popt)
@@ -119,13 +125,14 @@ X = calcpoint(x)
 fit = func(X, *popt)
 
 # plot data
-plt.plot(x, y)
+#plt.plot(x, y)
+plt.bar(x,y,edgecolor='g',color='None',align='center')
 
 # plot misc
 plot_default(x,y)
 
 # plot gausses sum
-plt.plot(X, fit , 'r-',lw=2)
+plt.plot(X, fit ,'r-',lw=2)
 
 # plot sub-gauss
 subplot(X,popt)
